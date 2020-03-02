@@ -4,7 +4,7 @@ var app = express();
 var path = require('path');
 app.use(express.static(__dirname + '/views'));
 app.set('views', path.join(__dirname, 'views'));
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 //const routes = require('./routes/routes.js');
 const db = require('./database/db.js');
 app.use(bodyParser.json()); // support json encoded bodies
@@ -19,7 +19,7 @@ app.listen(PORT,()=>console.log(`listening on ${PORT}`));
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
